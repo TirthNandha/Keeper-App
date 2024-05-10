@@ -5,8 +5,6 @@ import Note from "./Note"
 import CreateArea from "./CreateArea"
 
 
-
- 
 function App() {
   const [notes, setNotes] = useState([])
 
@@ -28,13 +26,11 @@ function App() {
       <div>
         <Header />
         <CreateArea onAdd={addNote}/>
-        {console.log("before: ", notes)}
         {notes.map((entry, index) => {
           return (<Note 
             key={index} id= {index} title={entry.title} content={entry.content} onDelete= {deleteNote}
           />)
         })}
-        {console.log("after: ",notes)}
         <Footer />
       </div>
     );
