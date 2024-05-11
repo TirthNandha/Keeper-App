@@ -8,12 +8,13 @@ var cors = require('cors')
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3001",
+  origin: "http://localhost:3000",
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -29,6 +30,10 @@ const Note = mongoose.model("Note", noteSchema)
 app.get("/", function(req, res) {
   res.send("Hello World!")
 })
+app.post('/test', (req, res) => {
+    console.log('Parsed form data:', req.body);
+    res.send('Received form data');
+  });
 
 app.route("/notes")
 
@@ -39,13 +44,13 @@ app.route("/notes")
         res.send(notes);
 })
 
-.post(function(req,res) {
+.post(async function(req,res) {
 
     const newNote = new Note({
         title : req.body.title,
         content : req.body.content
     })
-    newNote.save()
+    await newNote.save()
     res.send("document saved successfully")
 })
 
@@ -91,6 +96,6 @@ app.route("/notes/:noteTitle")
 })
 
 
-app.listen(3000, function () {
-    console.log("Server started on port 3000");
+app.listen(5000, function () {
+    console.log("Server started on port 5000");
   });

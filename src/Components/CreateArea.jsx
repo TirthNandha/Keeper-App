@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
+import Axios from "axios";
 
 function CreateArea(props) {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -28,15 +29,12 @@ function CreateArea(props) {
       props.onAdd(noteToSend);
   
       console.log("Sending request with newNote:", noteToSend);
-      const response = await fetch(`http://localhost:3000/notes`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(noteToSend),
-      });
-      const data = await response.json();
-      console.log("Response:", data);
+      const response = await Axios.post(`http://localhost:5000/notes`, JSON.stringify(noteToSend), {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+      console.log("Response:", response);
   
       // Reset the form fields after successful submission
       setNewNote({
@@ -44,18 +42,13 @@ function CreateArea(props) {
         content: ""
       });
     } catch (error) {
-      console.log(error);
+      console.log("Error:", error);
     }
   }
-  
-  
-  
-  
-
 
   return (
     <div>
-      <form className="create-note">
+      <form className="create-note" onSubmit={(e) => e.preventDefault()}>
         {isExpanded ? <input name="title" placeholder="Title" onChange={handleChange} value={newNote.title} /> : null}
         <textarea name="content" placeholder="Take a note..." onClick={handleExpand} rows= {isExpanded ? "3": "1"} onChange={handleChange} value={newNote.content} />
         <Zoom in={isExpanded? true: false}>
