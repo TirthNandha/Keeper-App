@@ -15,7 +15,15 @@ function App() {
     })
   }
 
-  function deleteNote(id) {
+  async function deleteNote(title, id) {
+    // console.log(url);
+    Axios.delete("http://localhost:5000/notes/" + title)
+    .then(response => {
+      console.log(`Deleted post with title ${title}`);
+    })
+    .catch(error => {
+      console.error(error);
+    });
     setNotes((prevNote) => {
       return prevNote.filter((note, index) => {
         return index !== id
@@ -26,7 +34,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await Axios.get("http://localhost:5000/notes");
-      setNotes(response.data);
+      // setNotes(response.data);
     };
     fetchData();
   }, []);
