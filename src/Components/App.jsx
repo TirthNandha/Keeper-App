@@ -1,8 +1,9 @@
-import React,{useState} from "react"
+import React,{useState, useEffect} from "react"
 import Header from "./Header"
 import Footer from "./Footer"
 import Note from "./Note"
 import CreateArea from "./CreateArea"
+import Axios from "axios";
 
 
 function App() {
@@ -22,6 +23,14 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await Axios.get("http://localhost:5000/notes");
+      setNotes(response.data);
+    };
+    fetchData();
+  }, []);
+
     return (
       <div>
         <Header />
@@ -36,3 +45,5 @@ function App() {
     );
   }
   export default App;
+
+  
