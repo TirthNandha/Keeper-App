@@ -31,6 +31,17 @@ function App() {
     })
   }
 
+  function handleDeleteAll() {
+    Axios.delete("http://localhost:5000/notes/")
+    .then(response => {
+      console.log("All notes deleted");
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    setNotes([])
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await Axios.get("http://localhost:5000/notes");
@@ -42,7 +53,7 @@ function App() {
     return (
       <div>
         <Header />
-        <CreateArea onAdd={addNote}/>
+        <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll}/>
         {notes.map((entry, index) => {
           return (<Note 
             key={index} id= {index} title={entry.title} content={entry.content} onDelete= {deleteNote}

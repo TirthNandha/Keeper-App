@@ -3,6 +3,10 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
 import Axios from "axios";
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { red } from "@mui/material/colors";
+import { styled } from '@mui/material/styles';
 
 function CreateArea(props) {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -21,6 +25,7 @@ function CreateArea(props) {
   function handleExpand() {
     setIsExpanded(true)
   }
+
 
   async function handleClick(event) {
     event.preventDefault();
@@ -46,8 +51,20 @@ function CreateArea(props) {
     }
   }
 
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: red
+  }));
+
   return (
     <div>
+      <div>
+        <ColorButton variant="outlined" startIcon={<DeleteIcon />} onClick={() => {
+            props.onDeleteAll()
+        }}>
+          Delete All
+        </ColorButton>
+
+      </div>
       <form className="create-note" onSubmit={(e) => e.preventDefault()}>
         {isExpanded ? <input name="title" placeholder="Title" onChange={handleChange} value={newNote.title} /> : null}
         <textarea name="content" placeholder="Take a note..." onClick={handleExpand} rows= {isExpanded ? "3": "1"} onChange={handleChange} value={newNote.content} />
