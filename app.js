@@ -30,11 +30,6 @@ const Note = mongoose.model("Note", noteSchema)
 app.get("/", function(req, res) {
   res.send("Hello World!")
 })
-app.post('/test', (req, res) => {
-    console.log('Parsed form data:', req.body);
-    res.send('Received form data');
-  });
-
 app.route("/notes")
 
 /////////////////Requests targeting all NOtes////////////////

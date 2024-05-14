@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await Axios.get("http://localhost:5000/notes");
-      // setNotes(response.data);
+      setNotes(response.data);  
     };
     fetchData();
   }, []);
