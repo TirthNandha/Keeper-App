@@ -103,4 +103,6 @@
     cursor: pointer;
     outline: none;
   }
-  
+  .deleteAllButton {
+    padding-left: 1.5cap;
+  }
