@@ -53,7 +53,7 @@ function App() {
     return (
       <div>
         <Header />
-        <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll}/>
+        <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll} notesLength={notes.length}/>
         {notes.map((entry, index) => {
           return (<Note 
             key={index} id= {index} title={entry.title} content={entry.content} onDelete= {deleteNote}

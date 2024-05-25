@@ -61,15 +61,15 @@ function CreateArea(props) {
           </Fab>
         </Zoom>
       </form>
-      <div className="deleteAllButton">
+      {props.notesLength > 0 && <div className="deleteAllButton">
         <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} onClick={() => {
             props.onDeleteAll()
         }}>
           Delete All
         </Button>
-      </div>
+      </div>}
     </div>
-  );
-}
+  )
+};
 
 export default CreateArea;
