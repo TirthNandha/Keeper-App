@@ -56,7 +56,7 @@ function CreateArea(props) {
         {isExpanded ? <input name="title" placeholder="Title" onChange={handleChange} value={newNote.title} /> : null}
         <textarea name="content" placeholder="Take a note..." onClick={handleExpand} rows= {isExpanded ? "3": "1"} onChange={handleChange} value={newNote.content} />
         <Zoom in={isExpanded? true: false}>
-          <Fab onClick={handleClick} style={{ position: 'absolute', bottom: '10px', left: '10px' }}>
+          <Fab onClick={handleClick} style={{ position: 'absolute', bottom: '10px', right: '20px' }}>
             <AddIcon />
           </Fab>
         </Zoom>
