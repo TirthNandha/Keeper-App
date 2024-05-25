@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect(process.env.DB_URI)
+mongoose.connect(process.env.DB_URI);
 
 const noteSchema = new mongoose.Schema({
     title: String,

@@ -23,10 +23,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:frontend": "react-scripts start",
+    "start:backend": "node app.js",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +50,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.0"
+    "@types/react-dom": "^18.3.0",
+    "concurrently": "^8.2.2"
   }
 }
