@@ -8,7 +8,7 @@ var cors = require('cors')
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://keeper-app-fe.onrender.com/" || "http://localhost:3000",
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }
@@ -91,6 +91,6 @@ app.route("/notes/:noteTitle")
 })
 
 
-app.listen(5000, function () {
+app.listen(5000 || process.env.PORT, function () {
     console.log("Server started on port 5000");
   });

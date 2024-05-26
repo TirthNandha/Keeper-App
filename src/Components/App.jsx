@@ -8,6 +8,7 @@ import Axios from "axios";
 
 function App() {
   const [notes, setNotes] = useState([])
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   function addNote(note) {
     setNotes((prevNote) => {
@@ -17,7 +18,7 @@ function App() {
 
   async function deleteNote(title, id) {
     // console.log(url);
-    Axios.delete("http://localhost:5000/notes/" + title)
+    Axios.delete(API_URL + "/notes/" + title)
     .then(response => {
       console.log(`Deleted post with title ${title}`);
     })
@@ -32,7 +33,7 @@ function App() {
   }
 
   function handleDeleteAll() {
-    Axios.delete("http://localhost:5000/notes/")
+    Axios.delete(API_URL + "/notes/")
     .then(response => {
       console.log("All notes deleted");
     })
@@ -44,8 +45,12 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await Axios.get("http://localhost:5000/notes");
-      setNotes(response.data);  
+      try {
+        const response = await Axios.get(API_URL + "/notes");
+        setNotes(response.data);  
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchData();
   }, []);
@@ -53,7 +58,7 @@ function App() {
     return (
       <div>
         <Header />
-        <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll} notesLength={notes.length}/>
+        <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll} api_url={API_URL} notesLength={notes.length}/>
         {notes.map((entry, index) => {
           return (<Note 
             key={index} id= {index} title={entry.title} content={entry.content} onDelete= {deleteNote}
