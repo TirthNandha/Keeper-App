@@ -8,7 +8,7 @@ var cors = require('cors')
 const app = express();
 
 const corsOptions = {
-  origin: "https://keeper-app-fe.onrender.com/" || "http://localhost:3000",
+  origin: "http://localhost:3000",
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect(process.env.DB_URI);
+mongoose.connect(process.env.DB_URI)
 
 const noteSchema = new mongoose.Schema({
     title: String,
@@ -91,8 +91,6 @@ app.route("/notes/:noteTitle")
 })
 
 
-app.listen(5000 || process.env.PORT, function () {
+app.listen(5000, function () {
     console.log("Server started on port 5000");
   });
-
-// Sab changa si
