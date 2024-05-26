@@ -70,4 +70,6 @@ function App() {
   }
   export default App;
 
+
+// Path: src/Components/CreateArea.jsx
   
