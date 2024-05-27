@@ -17,7 +17,7 @@ function App() {
 
   async function deleteNote(title, id) {
     // console.log(url);
-    Axios.delete("https://keeper-app-two-alpha.vercel.app/notes/" + title)
+    Axios.delete("http://localhost:5000/notes/" + title)
     .then(response => {
       console.log(`Deleted post with title ${title}`);
     })
@@ -32,7 +32,7 @@ function App() {
   }
 
   function handleDeleteAll() {
-    Axios.delete("https://keeper-app-two-alpha.vercel.app/notes/")
+    Axios.delete("http://localhost:5000/notes/")
     .then(response => {
       console.log("All notes deleted");
     })
@@ -44,7 +44,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await Axios.get("https://keeper-app-two-alpha.vercel.app/notes");
+      const response = await Axios.get("http://localhost:5000/notes");
       setNotes(response.data);  
     };
     fetchData();
