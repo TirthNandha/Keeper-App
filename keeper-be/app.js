@@ -8,7 +8,7 @@ var cors = require('cors')
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://keeper-app-fe.vercel.app",
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }
