@@ -32,7 +32,7 @@ function CreateArea(props) {
       props.onAdd(noteToSend);
   
       console.log("Sending request with newNote:", noteToSend);
-      const response = await Axios.post(`http://localhost:5000/notes`, JSON.stringify(noteToSend), {
+      const response = await Axios.post(`https://keeper-app-api-my9t.onrender.com/notes`, JSON.stringify(noteToSend), {
       headers: {
         "Content-Type": "application/json"
       }
