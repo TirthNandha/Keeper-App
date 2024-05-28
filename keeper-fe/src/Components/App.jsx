@@ -57,7 +57,14 @@ function App() {
         <Header />
         <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll} notesLength={notes.length}/>
         {isLoading?(
-          <h1>Loading...</h1>
+          <div className="spinner">
+            <h1>Loading...</h1>
+            <div className="rect1"></div>
+            <div className="rect2"></div>
+            <div className="rect3"></div>
+            <div className="rect4"></div>
+            <div className="rect5"></div>
+      </div>
         ):(
           <ul>
             {notes.map((entry, index) => {
