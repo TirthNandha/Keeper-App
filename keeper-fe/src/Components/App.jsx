@@ -8,8 +8,8 @@ import Axios from "axios";
 
 function App() {
   const [notes, setNotes] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   function addNote(note) {
     setNotes((prevNote) => {
       return [...prevNote, note ]
@@ -45,9 +45,9 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await Axios.get("https://keeper-app-api-my9t.onrender.com/notes");
-      setNotes(response.data);  
-      setIsLoading(false);
+       const response = await Axios.get("https://keeper-app-api-my9t.onrender.com/notes");
+       setNotes(response.data);  
+       setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -57,15 +57,17 @@ function App() {
         <Header />
         <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll} notesLength={notes.length}/>
         {isLoading?(
-          <div className="spinner">
-            <h1>Loading...</h1>
-            <div className="rect1"></div>
-            <div className="rect2"></div>
-            <div className="rect3"></div>
-            <div className="rect4"></div>
-            <div className="rect5"></div>
-      </div>
-        ):(
+
+            <div>PLease wait... The server is loading...</div>
+              <div className="spinner">
+                <div className="rect1"></div>
+                <div className="rect2"></div>
+                <div className="rect3"></div>
+                <div className="rect4"></div>
+                <div className="rect5"></div>
+              </div>
+            </div>
+        ): (
           <ul>
             {notes.map((entry, index) => {
             return (<Note 
@@ -73,8 +75,8 @@ function App() {
             />)
           })}
           </ul>
-        )}
-        
+          
+        )}  
         <Footer />
       </div>
     );
