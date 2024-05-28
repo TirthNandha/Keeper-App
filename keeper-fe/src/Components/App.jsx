@@ -8,6 +8,7 @@ import Axios from "axios";
 
 function App() {
   const [notes, setNotes] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
 
   function addNote(note) {
     setNotes((prevNote) => {
@@ -44,8 +45,9 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await Axios.get("http://localhost:5000/notes");
-      setNotes(response.data);  
+        const response = await Axios.get("http://localhost:5000/notes");
+        setNotes(response.data);  
+        setIsLoading(false)
     };
     fetchData();
   }, []);
@@ -54,11 +56,18 @@ function App() {
       <div>
         <Header />
         <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll} notesLength={notes.length}/>
-        {notes.map((entry, index) => {
-          return (<Note 
-            key={index} id= {index} title={entry.title} content={entry.content} onDelete= {deleteNote}
-          />)
-        })}
+        {isLoading?(
+          <div>PLease wait... The server is loading...</div>
+        ): (
+          <ul>
+            {notes.map((entry, index) => {
+            return (<Note 
+              key={index} id= {index} title={entry.title} content={entry.content} onDelete= {deleteNote} isLoading={isLoading}
+            />)
+          })}
+          </ul>
+          
+        )}
         <Footer />
       </div>
     );
