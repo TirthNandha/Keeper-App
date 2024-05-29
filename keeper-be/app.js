@@ -8,7 +8,7 @@ var cors = require('cors')
 const app = express();
 
 const corsOptions = {
-  origin: "https://keeper-app-silk.vercel.app",
+  origin: "https://keeper-app.tirthnandha.live",
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }
