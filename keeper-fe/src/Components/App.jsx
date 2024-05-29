@@ -58,9 +58,7 @@ function App() {
         <CreateArea onAdd={addNote} onDeleteAll={handleDeleteAll} notesLength={notes.length}/>
         {isLoading?(
           <div className="spinner">
-            <div className="text">
-              <h1>Please Wait... The server is loading...</h1>
-             </div>
+            <h1>Server is loading...</h1>
             <div className="rect1"></div>
             <div className="rect2"></div>
             <div className="rect3"></div>

@@ -108,15 +108,11 @@
   }
 
   .spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust this value as needed */
-  }
-  
-  .spinner .text {
-    white-space: nowrap;
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
     text-align: center;
+    font-size: 10px;
   }
   
   .spinner > div {
@@ -162,8 +158,4 @@
       transform: scaleY(1.0);
       -webkit-transform: scaleY(1.0);
     }
-  }
-  .spinner h1 {
-    white-space: nowrap;
-    overflow: visible;
   }
