@@ -159,3 +159,8 @@
       -webkit-transform: scaleY(1.0);
     }
   }
+  .spinner h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

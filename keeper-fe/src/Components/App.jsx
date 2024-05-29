@@ -64,7 +64,7 @@ function App() {
             <div className="rect3"></div>
             <div className="rect4"></div>
             <div className="rect5"></div>
-      </div>
+          </div>
         ):(
           <ul>
             {notes.map((entry, index) => {
