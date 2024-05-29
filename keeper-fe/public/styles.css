@@ -109,14 +109,14 @@
 
   .spinner {
     display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  width: 50px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust this value as needed */
+  }
+  
+  .spinner .text {
+    white-space: nowrap;
+    text-align: center;
   }
   
   .spinner > div {
