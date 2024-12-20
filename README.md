@@ -28,5 +28,3 @@
      `npm start`
 
 10. Enjoy the keeper app to save your notes.
-
-## Live-Link: https://keeper-app-silk.vercel.app/
